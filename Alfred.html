@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALFREDO M. HORTEZA | Portfolio</title>
+<meta name="description" content="Personal portfolio of ALFREDO M. HORTEZA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{--bg:#f5f1e8;--surface:#fffdf8;--ink:#171717;--muted:#68645c;--line:#d9d1c2;--orange:#ff5a36;--yellow:#f5c84c;--blue:#2d63ff;--radius:22px;--max:1160px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(100% - 40px,var(--max));margin:auto}
+
+header{padding:22px 0;position:relative;z-index:10}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:"Space Grotesk";font-weight:700;font-size:1.15rem}
+.logo span{color:var(--orange)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:.84rem;font-weight:600}
+.nav-links a:hover{color:var(--orange)}
+.nav-btn{background:var(--ink);color:white;padding:10px 16px;border-radius:100px;font-size:.78rem}
+.menu{display:none;border:0;background:none;font-size:1.4rem}
+
+.hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:70px;padding:50px 0 90px}
+.label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+.hero h1{font-family:"Space Grotesk";font-size:clamp(3.2rem,7vw,6.8rem);line-height:.92;letter-spacing:-5px}
+.hero h1 span{color:var(--orange)}
+.profile-photo{margin-top:28px;margin-bottom:18px}
+.profile-photo img{width:150px;height:150px;object-fit:cover;border-radius:50%;border:4px solid var(--ink);display:block}
+.hero-text{max-width:590px;color:var(--muted);margin-top:28px;font-size:1.02rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.button{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:100px;font-size:.8rem;font-weight:700;border:1px solid var(--ink);transition:.2s}
+.button-dark{background:var(--ink);color:white}.button-light{background:transparent}.button:hover{transform:translateY(-3px)}
+
+.visual{position:relative;height:500px}.shape{position:absolute;border-radius:50%}
+.shape-main{width:330px;height:330px;background:var(--yellow);top:65px;left:50%;transform:translateX(-50%)}
+.shape-blue{width:130px;height:130px;background:var(--blue);right:0;top:10px}
+.shape-orange{width:105px;height:105px;background:var(--orange);left:5px;bottom:35px}
+.visual-card{position:absolute;width:270px;padding:24px;background:var(--surface);border:2px solid var(--ink);border-radius:18px;left:50%;top:150px;transform:translateX(-50%) rotate(-4deg);box-shadow:10px 12px 0 var(--ink)}
+.visual-card .initial{width:85px;height:85px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:white;font-family:"Space Grotesk";font-size:2rem;font-weight:700;margin-bottom:20px}
+.visual-card h3{font-family:"Space Grotesk";font-size:1.35rem}.visual-card p{color:var(--muted);font-size:.8rem}
+
+.section{padding:110px 0;border-top:1px solid var(--line)}
+.section-title{display:grid;grid-template-columns:.65fr 1.35fr;gap:40px;margin-bottom:50px}
+.section-number{font-family:"Space Grotesk";font-size:4rem;font-weight:700;color:var(--line)}
+.section-title h2{font-family:"Space Grotesk";font-size:clamp(2.3rem,5vw,4.2rem);line-height:1;letter-spacing:-2px}
+.section-title p{color:var(--muted);max-width:620px;margin-top:14px}
+
+.about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.about-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.about-card.accent{background:var(--orange);color:white;border-color:var(--orange)}
+.about-card p{color:var(--muted)}.about-card.accent p{color:white}
+.about-card h3{font-family:"Space Grotesk";font-size:1.5rem;margin-bottom:15px}
+
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;min-height:190px}
+.skill-card:nth-child(2){background:var(--yellow)}.skill-card:nth-child(3){background:var(--blue);color:white}
+.skill-card h3{font-family:"Space Grotesk";margin-bottom:22px}
+.skills-list{display:flex;flex-wrap:wrap;gap:8px}.skills-list span{padding:7px 10px;border:1px solid currentColor;border-radius:100px;font-size:.72rem}
+
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.project{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);overflow:hidden;transition:.25s}
+.project:hover{transform:translateY(-6px);box-shadow:8px 8px 0 var(--ink)}
+.project-cover{height:230px;padding:25px;display:flex;align-items:flex-end;background:var(--ink);color:white;position:relative;overflow:hidden}
+.project-cover::before{content:"";width:170px;height:170px;border-radius:50%;background:var(--yellow);position:absolute;right:-35px;top:-50px}
+.project:nth-child(2) .project-cover{background:var(--blue)}
+.project:nth-child(2) .project-cover::before{background:var(--orange)}
+.project-cover strong{position:relative;z-index:1;font-family:"Space Grotesk";font-size:2rem}
+.project-body{padding:26px}.project-body h3{font-family:"Space Grotesk";font-size:1.35rem}
+.project-body p{color:var(--muted);font-size:.86rem;margin-top:8px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}
+.tag{background:var(--bg);border:1px solid var(--line);border-radius:100px;padding:5px 9px;font-size:.65rem;font-weight:600}
+.project-link{font-size:.78rem;font-weight:700}.project-link:hover{color:var(--orange)}
+
+.education{display:grid;gap:14px}
+.edu{display:grid;grid-template-columns:160px 1fr;gap:30px;padding:25px 0;border-bottom:1px solid var(--line)}
+.edu-year{color:var(--orange);font-size:.78rem;font-weight:700}
+.edu h3{font-family:"Space Grotesk";font-size:1.3rem}.edu p{color:var(--muted);font-size:.86rem}
+
+.contact{background:var(--ink);color:white;padding:100px 0}
+.contact-wrap{display:flex;justify-content:space-between;align-items:end;gap:40px}
+.contact h2{font-family:"Space Grotesk";font-size:clamp(2.7rem,6vw,5.5rem);line-height:.95;letter-spacing:-3px}
+.contact p{color:#aaa;max-width:520px;margin-top:18px}
+.contact-links{display:flex;flex-wrap:wrap;gap:10px}
+.contact-link{padding:12px 16px;border:1px solid #444;border-radius:100px;font-size:.75rem;transition:.2s}
+.contact-link:hover{background:white;color:var(--ink)}
+footer{background:var(--ink);color:#777;padding:25px 0;border-top:1px solid #333;font-size:.72rem}
+.reveal{opacity:0;transform:translateY(25px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+
+@media(max-width:850px){
+.nav-links{display:none;position:absolute;top:75px;left:20px;right:20px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px;flex-direction:column;gap:0}
+.nav-links.active{display:flex}.nav-links a{display:block;padding:12px}.nav-btn{display:none}.menu{display:block}
+.hero{grid-template-columns:1fr;gap:30px}.visual{height:400px}
+.section-title{grid-template-columns:1fr;gap:8px}.section-number{font-size:2.5rem}
+.about,.skill-grid,.project-grid{grid-template-columns:1fr}.contact-wrap{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:520px){
+.container{width:min(100% - 28px,var(--max))}.hero h1{letter-spacing:-3px}
+.shape-main{width:260px;height:260px}.visual-card{width:235px}
+.edu{grid-template-columns:1fr;gap:5px}.section{padding:75px 0}
+.profile-photo img{width:130px;height:130px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+<a class="logo" href="#home">ALFREDO<span>.</span></a>
+<button class="menu" id="menu">☰</button>
+<ul class="nav-links" id="navLinks">
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<a class="nav-btn" href="#contact">Let's Talk ↗</a>
+</div>
+</header>
+
+<main id="home">
+
+<section class="hero">
+<div class="container" style="display:contents">
+
+<div class="reveal">
+<span class="label">Personal Portfolio / 2026</span>
+<h1>ALFREDO<br><span>M. HORTEZA</span></h1>
+
+<div class="profile-photo">
+<img src="alfred.jpg" alt="Alfredo M. Horteza">
+</div>
+
+<p class="hero-text">
+Welcome to my portfolio. This space highlights my skills,
+projects, education, interests, and the work I continue to develop.
+</p>
+
+<div class="hero-actions">
+<a class="button button-dark" href="#projects">Explore Projects</a>
+<a class="button button-light" href="#about">About Me ↓</a>
+</div>
+</div>
+
+<div class="visual reveal">
+<div class="shape shape-main"></div>
+<div class="shape shape-blue"></div>
+<div class="shape shape-orange"></div>
+<div class="visual-card">
+<div class="initial">AH</div>
+<h3>ALFREDO M. HORTEZA</h3>
+<p>Student • Creator • Learner</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="container">
+<div class="section-title reveal">
+<div class="section-number">01</div>
+<div><h2>About me.</h2><p>Get to know me and what I am currently working toward.</p></div>
+</div>
+<div class="about">
+<div class="about-card accent reveal">
+<h3>Hello, I'm Alfredo.</h3>
+<p>I am a student who is interested in technology, creativity, and building useful digital experiences. I am continuously learning new skills and looking for opportunities to improve.</p>
+</div>
+<div class="about-card reveal">
+<h3>My approach</h3>
+<p>I believe good work comes from curiosity, practice, and attention to detail. Every project is an opportunity to learn something new and create something better than before.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="skills">
+<div class="container">
+<div class="section-title reveal">
+<div class="section-number">02</div>
+<div><h2>My toolkit.</h2><p>Technologies, tools, and strengths I use while learning and building projects.</p></div>
+</div>
+<div class="skill-grid">
+<div class="skill-card reveal">
+<h3>Development</h3>
+<div class="skills-list"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Programming</span></div>
+</div>
+<div class="skill-card reveal">
+<h3>Design</h3>
+<div class="skills-list"><span>UI Design</span><span>UX</span><span>Wireframing</span><span>Prototyping</span></div>
+</div>
+<div class="skill-card reveal">
+<h3>Tools</h3>
+<div class="skills-list"><span>VS Code</span><span>GitHub</span><span>Canva</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ONLY TWO PROJECTS -->
+<section class="section" id="projects">
+<div class="container">
+<div class="section-title reveal">
+<div class="section-number">03</div>
+<div><h2>Selected work.</h2><p>Two projects that showcase my work and learning experience.</p></div>
+</div>
+
+<div class="project-grid">
+
+<article class="project reveal">
+<div class="project-cover"><strong>PROJECT 01</strong></div>
+<div class="project-body">
+<h3>Web Portfolio</h3>
+<p>A responsive personal portfolio website designed to present my profile, skills, education, and projects using a clean and creative interface.</p>
+<div class="tags">
+<span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">UI Design</span>
+</div>
+<a class="project-link" href="#home">View project ↗</a>
+</div>
+</article>
+
+<article class="project reveal">
+<div class="project-cover">
+    <img src="Cover.png"
+    alt="Project 02">
+    <strong>PROJECT 02</strong></div>
+<div class="project-body">
+<h3>Grocery Inventory System</h3>
+<p>A working inventory system for managing grocery products, stock quantities, prices, categories, and low-stock items.</p>
+<div class="tags">
+<span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">LocalStorage</span>
+</div>
+<a class="project-link" href="https://marvelous-cascaron-2f1447.netlify.app/" target="_blank">View project ↗</a>
+</div>
+</article>
+
+</div>
+</div>
+</sectio
+
+<section class="section" id="education">
+<div class="container">
+<div class="section-title reveal">
+<div class="section-number">04</div>
+<div><h2>Education.</h2><p>My academic background and educational journey.</p></div>
+</div>
+<div class="education">
+
+<div class="edu reveal">
+<div class="edu-year">CURRENT</div>
+<div><h3>College / University</h3><p>Eastern Samar State University</p></div>
+</div>
+
+<div class="edu reveal">
+<div class="edu-year">SENIOR HIGH</div>
+<div><h3>Senior High School</h3><p>Bagacay National High School · Eastern Samar, Samar</p></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="container">
+<div class="contact-wrap">
+<div>
+<span class="label">05 • CONTACT</span>
+<h2>Let's create<br>something.</h2>
+<p>Interested in working together, discussing a project, or simply connecting? Feel free to reach out through any of my contact links.</p>
+</div>
+
+<div class="contact-links">
+<a class="contact-link" href="mailto:macawilealfred8@gmail.com">Email ↗</a>
+
+<!-- Replace the GitHub URL below with Alfredo's actual GitHub profile -->
+<a class="contact-link" href=https://github.com/codemask02-jpg target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+
+<!-- Replace the LinkedIn URL below with Alfredo's actual LinkedIn profile -->
+<a class="contact-link" href="https://www.linkedin.com/in/horteza-alfredo-m-39448842b/ " target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+
+<a class="contact-link" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+
+
+</div>
+
+
+
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">© 2026 ALFREDO M. HORTEZA · Personal Portfolio</div>
+</footer>
+
+<script>
+const menu=document.getElementById("menu");
+const navLinks=document.getElementById("navLinks");
+
+menu.addEventListener("click",()=>navLinks.classList.toggle("active"));
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+    link.addEventListener("click",()=>navLinks.classList.remove("active"));
+});
+
+const revealElements=document.querySelectorAll(".reveal");
+
+const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+        }
+    });
+},{threshold:.12});
+
+revealElements.forEach(element=>observer.observe(element));
+</script>
+
+</body>
+</html>
